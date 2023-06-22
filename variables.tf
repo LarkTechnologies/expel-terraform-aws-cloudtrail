@@ -19,6 +19,9 @@ variable "tags" {
 variable "expel_customer_organization_guid" {
   description = "Expel customer's organization GUID assigned to you by Expel. You can find it in your browser URL after navigating to Settings > My Organization in Workbench."
   type        = string
+  default     = null
+  #add the default = null because it didnt work other wise. 
+  #willb0t 06-21-2023
 }
 
 variable "expel_customer_aws_account_id" {
@@ -46,7 +49,9 @@ variable "expel_assume_role_session_name" {
 variable "enable_organization_trail" {
   description = "For customers with AWS organizations setup, log events for the management account and all member accounts, and permeate IAM policies in all member accounts for Expel to get basic read permissions of resources in order to investigate alerts. Set to false if you want to onboard a single AWS account"
   type        = bool
-  default     = true
+  default     = false
+  #ended up needing to change this to false in order to get terraform to work properly with minimal permissions. 
+  #willb0t 06-21-2023
 }
 
 /* --- Set these variables to support CloudTrail configuration --- */

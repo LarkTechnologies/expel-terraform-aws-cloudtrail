@@ -24,6 +24,7 @@ variable "existing_sns_topic_arn" {
   default     = null
 }
 
+
 provider "aws" {
   region = var.region
 }
